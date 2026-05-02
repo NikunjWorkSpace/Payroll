@@ -1,0 +1,38 @@
+<section class="page">
+  <div class="hero-card">
+    <span class="tag">Reporting Hub</span>
+    <h2>Generate tenant-based reporting packs for payroll, accounting, and statutory review.</h2>
+    <p>Use the latest payroll runs as the source for payslips, payroll audit summaries, and SARS-oriented exports.</p>
+  </div>
+
+  <section class="panel">
+    <h3>Available payroll runs</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Run</th>
+          <th>Processed</th>
+          <th>Employees</th>
+          <th>Payslip</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let run of history">
+          <td>{{ run.runNumber }}</td>
+          <td>{{ run.processedUtc }}</td>
+          <td>{{ run.payrollLines.length }}</td>
+          <td>
+            <button
+              class="secondary-button"
+              type="button"
+              [disabled]="run.payrollLines.length === 0"
+              (click)="downloadPayslip(run.payrollLines[0].id)">
+              Download sample payslip
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+

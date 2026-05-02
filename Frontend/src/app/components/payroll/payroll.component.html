@@ -1,0 +1,75 @@
+<section class="page">
+  <div class="grid two">
+    <section class="panel">
+      <span class="tag">Run Payroll</span>
+      <h2>Process monthly or ad-hoc cycles</h2>
+      <p>The backend calculates PAYE, UIF, SDL, and recurring deductions per tenant using the clean architecture application layer.</p>
+
+      <form [formGroup]="form" (ngSubmit)="processPayroll()" class="form-grid">
+        <div class="field">
+          <label for="periodStart">Period start</label>
+          <input id="periodStart" type="date" formControlName="periodStart">
+        </div>
+
+        <div class="field">
+          <label for="periodEnd">Period end</label>
+          <input id="periodEnd" type="date" formControlName="periodEnd">
+        </div>
+
+        <div class="field">
+          <label for="cycle">Cycle</label>
+          <select id="cycle" formControlName="cycle">
+            <option value="Monthly">Monthly</option>
+            <option value="AdHoc">Ad Hoc</option>
+          </select>
+        </div>
+
+        <div class="actions">
+          <button class="primary-button" type="submit">Process Payroll</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h3>Current summary</h3>
+      <div class="grid three">
+        <article class="metric-card">
+          <span>Gross</span>
+          <strong>R {{ (summary?.latestGrossTotal ?? 0) | number:'1.2-2' }}</strong>
+        </article>
+        <article class="metric-card">
+          <span>Deductions</span>
+          <strong>R {{ (summary?.latestDeductions ?? 0) | number:'1.2-2' }}</strong>
+        </article>
+        <article class="metric-card">
+          <span>Net</span>
+          <strong>R {{ (summary?.latestNetTotal ?? 0) | number:'1.2-2' }}</strong>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h3>Payroll history</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Run</th>
+          <th>Period</th>
+          <th>Gross</th>
+          <th>Deductions</th>
+          <th>Net</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let run of history">
+          <td>{{ run.runNumber }}</td>
+          <td>{{ run.periodStart }} - {{ run.periodEnd }}</td>
+          <td>R {{ run.grossTotal | number:'1.2-2' }}</td>
+          <td>R {{ run.totalDeductions | number:'1.2-2' }}</td>
+          <td>R {{ run.netTotal | number:'1.2-2' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>

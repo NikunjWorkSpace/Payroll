@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PayBridge Sample Payslip</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 32px; color: #1f2933; }
+    h1 { color: #b45309; }
+    table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+    th, td { text-align: left; padding: 10px; border-bottom: 1px solid #d9e2ec; }
+    .summary { margin-top: 24px; width: 320px; }
+  </style>
+</head>
+<body>
+  <h1>PayBridge Payslip</h1>
+  <p><strong>Employee:</strong> Lerato Nkosi</p>
+  <p><strong>Tenant:</strong> PayBridge Manufacturing</p>
+  <p><strong>Payroll Period:</strong> February 1, 2026 to February 28, 2026</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Amount (ZAR)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Basic Salary</td><td>35,000.00</td></tr>
+      <tr><td>Travel Allowance</td><td>2,500.00</td></tr>
+      <tr><td>PAYE</td><td>(9,500.00)</td></tr>
+      <tr><td>UIF</td><td>(177.12)</td></tr>
+      <tr><td>Medical Aid Top-up</td><td>(850.00)</td></tr>
+    </tbody>
+  </table>
+
+  <table class="summary">
+    <tbody>
+      <tr><th>Gross Pay</th><td>37,500.00</td></tr>
+      <tr><th>Net Pay</th><td>26,972.88</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>
+

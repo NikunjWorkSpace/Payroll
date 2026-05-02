@@ -1,0 +1,54 @@
+<section class="page">
+  <div class="hero-card">
+    <span class="tag">Operational Snapshot</span>
+    <h2>Tenant-aware payroll control without spreadsheet sprawl.</h2>
+    <p>PayBridge centralises company governance while preserving independent payroll cycles, employees, tax handling, and reporting for each subsidiary.</p>
+  </div>
+
+  <div class="grid three">
+    <article class="metric-card">
+      <span>Accessible companies</span>
+      <strong>{{ companies.length }}</strong>
+    </article>
+    <article class="metric-card">
+      <span>Active employees</span>
+      <strong>{{ summary?.activeEmployees ?? 0 }}</strong>
+    </article>
+    <article class="metric-card">
+      <span>Latest net payroll</span>
+      <strong>R {{ (summary?.latestNetTotal ?? 0) | number:'1.2-2' }}</strong>
+    </article>
+  </div>
+
+  <div class="grid two">
+    <section class="panel">
+      <h3>Compliance focus</h3>
+      <p>PAYE, UIF, and SDL calculations live in the backend application layer so every tenant runs through the same audited workflow.</p>
+      <div class="actions">
+        <span class="tag">JWT + Tenant Header</span>
+        <span class="tag">SARS-ready reporting</span>
+        <span class="tag">Leave balance tracking</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h3>Latest payroll health</h3>
+      <table class="data-table">
+        <tbody>
+          <tr>
+            <th>Gross payroll</th>
+            <td>R {{ (summary?.latestGrossTotal ?? 0) | number:'1.2-2' }}</td>
+          </tr>
+          <tr>
+            <th>Total deductions</th>
+            <td>R {{ (summary?.latestDeductions ?? 0) | number:'1.2-2' }}</td>
+          </tr>
+          <tr>
+            <th>Processed at</th>
+            <td>{{ summary?.latestProcessedUtc || 'No payroll run yet' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</section>

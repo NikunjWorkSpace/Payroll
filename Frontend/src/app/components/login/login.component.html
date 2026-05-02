@@ -1,0 +1,30 @@
+<section class="login-page">
+  <div class="login-card">
+    <span class="tag">PayBridge</span>
+    <h1>Multi-tenant payroll, shaped for South African compliance.</h1>
+    <p>Use the seeded demo users to explore tenant switching, payroll processing, statutory summaries, and reporting flows.</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="login-form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email">
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password">
+      </div>
+
+      <div class="demo-note">
+        Demo users: `global.admin@paybridge.co.za`, `company.admin@paybridge.co.za`, `payroll.officer@paybridge.co.za`
+      </div>
+
+      <button class="primary-button" type="submit" [disabled]="isSubmitting">
+        {{ isSubmitting ? 'Signing in...' : 'Sign In' }}
+      </button>
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+    </form>
+  </div>
+</section>
+

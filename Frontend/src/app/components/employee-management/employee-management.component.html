@@ -1,0 +1,120 @@
+<section class="page">
+  <div class="grid two">
+    <section class="panel">
+      <h2>Employee Management</h2>
+      <p>Capture employee identity, tax references, bank details, and tenant-specific leave balances.</p>
+
+      <form [formGroup]="form" (ngSubmit)="createEmployee()" class="form-grid">
+        <div class="field">
+          <label for="companyId">Company / Tenant id</label>
+          <input id="companyId" formControlName="companyId">
+        </div>
+
+        <div class="field">
+          <label for="departmentId">Department id</label>
+          <select id="departmentId" formControlName="departmentId">
+            <option *ngFor="let department of departments" [value]="department.id">
+              {{ department.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="employeeNumber">Employee number</label>
+          <input id="employeeNumber" formControlName="employeeNumber">
+        </div>
+
+        <div class="field">
+          <label for="firstName">First name</label>
+          <input id="firstName" formControlName="firstName">
+        </div>
+
+        <div class="field">
+          <label for="lastName">Last name</label>
+          <input id="lastName" formControlName="lastName">
+        </div>
+
+        <div class="field">
+          <label for="idNumber">South African ID</label>
+          <input id="idNumber" formControlName="idNumber">
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" formControlName="email">
+        </div>
+
+        <div class="field">
+          <label for="position">Position</label>
+          <input id="position" formControlName="position">
+        </div>
+
+        <div class="field">
+          <label for="hireDate">Hire date</label>
+          <input id="hireDate" type="date" formControlName="hireDate">
+        </div>
+
+        <div class="field">
+          <label for="basicSalary">Basic salary</label>
+          <input id="basicSalary" type="number" formControlName="basicSalary">
+        </div>
+
+        <div class="field">
+          <label for="bankName">Bank name</label>
+          <input id="bankName" formControlName="bankName">
+        </div>
+
+        <div class="field">
+          <label for="accountNumber">Account number</label>
+          <input id="accountNumber" formControlName="accountNumber">
+        </div>
+
+        <div class="field">
+          <label for="branchCode">Branch code</label>
+          <input id="branchCode" formControlName="branchCode">
+        </div>
+
+        <div class="field">
+          <label for="accountType">Account type</label>
+          <input id="accountType" formControlName="accountType">
+        </div>
+
+        <div class="field">
+          <label for="taxNumber">Tax number</label>
+          <input id="taxNumber" formControlName="taxNumber">
+        </div>
+
+        <div class="field">
+          <label for="incomeTaxReference">Income tax reference</label>
+          <input id="incomeTaxReference" formControlName="incomeTaxReference">
+        </div>
+
+        <div class="actions">
+          <button class="primary-button" type="submit">Add Employee</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h3>Tenant Employees</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Annual Leave</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.fullName }}</td>
+            <td>{{ employee.position }}</td>
+            <td>R {{ employee.basicSalary | number:'1.2-2' }}</td>
+            <td>{{ employee.annualLeaveDays }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</section>

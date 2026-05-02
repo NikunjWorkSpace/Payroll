@@ -1,0 +1,49 @@
+<div class="shell">
+  <aside class="sidebar">
+    <div>
+      <span class="tag">PayBridge</span>
+      <h1>South African payroll built for tenant scale.</h1>
+      <p>Operate securely across subsidiaries, payroll cycles, and statutory workflows from one workspace.</p>
+    </div>
+
+    <nav class="nav-links">
+      <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a routerLink="/companies" routerLinkActive="active">Companies</a>
+      <a routerLink="/employees" routerLinkActive="active">Employees</a>
+      <a routerLink="/payroll" routerLinkActive="active">Payroll</a>
+      <a routerLink="/reports" routerLinkActive="active">Reports</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-card">
+        <strong>{{ userName }}</strong>
+        <span>{{ userRole }}</span>
+      </div>
+      <button class="secondary-button" (click)="logout()">Sign Out</button>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="content-header">
+      <div>
+        <h2>Tenant Workspace</h2>
+        <p>Switch sub-companies without losing operational context.</p>
+      </div>
+
+      <div class="tenant-picker">
+        <label for="tenantId">Sub-company</label>
+        <select
+          id="tenantId"
+          [ngModel]="selectedTenantId"
+          (ngModelChange)="onTenantChanged($event)">
+          <option *ngFor="let company of companies" [value]="company.tenantId">
+            {{ company.registeredName }}
+          </option>
+        </select>
+      </div>
+    </header>
+
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
